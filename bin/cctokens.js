@@ -524,7 +524,9 @@ function cmdToday() {
 function cmdSessions(n) {
   const records = scanAll();
   const agg = aggregate(records);
-  console.log(bold(cyan(`\n  Claude Code — ${Math.min(n, agg.bySession.size)} most recent sessions`)));
+  const shown = Math.min(n, agg.bySession.size);
+  const heading = n >= agg.bySession.size ? `all ${shown} sessions` : `${shown} most recent sessions`;
+  console.log(bold(cyan(`\n  Claude Code — ${heading}`)));
   console.log();
   console.log('  ' + renderSessions(agg.bySession, n).replace(/\n/g, '\n  '));
   console.log();
@@ -868,6 +870,7 @@ ${bold('COMMANDS')}
   ${cyan('this')}            just this terminal's session             ${dim('(reads $CLAUDE_CODE_SESSION_ID)')}
   ${cyan('session')} [N]     the N most recent sessions               ${dim('(default 12)')}
   ${cyan('session')} <name>  one session by name or id                ${dim('(e.g. "Deflekt")')}
+  ${cyan('session all')}     every session, newest first
   ${cyan('project')}         per-project token totals and cost
   ${cyan('live')}            live global dashboard                    ${dim('(refreshes 10s, Ctrl-C to quit)')}
   ${cyan('live this')}       live view of this terminal's session
@@ -899,6 +902,7 @@ function main() {
   if (cmd === 'this' || cmd === 'current') return cmdThis();
   if (cmd === 'session' || cmd === 'sessions') {
     const arg = args[1];
+    if (arg === 'all') return cmdSessions(Infinity);
     if (arg && !/^\d+$/.test(arg)) return cmdSessionByName(arg);
     const n = parseInt(arg, 10);
     return cmdSessions(Number.isFinite(n) && n > 0 ? n : 12);

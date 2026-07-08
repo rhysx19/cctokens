@@ -61,6 +61,7 @@ cctokens [command]
 | `this` | Just the session in the terminal you run it in (via `$CLAUDE_CODE_SESSION_ID`) |
 | `session [N]` | The N most recent sessions (default 12), newest first |
 | `session <name>` | One session by its name or id — e.g. `cctokens session "my refactor"` |
+| `session all` | Every session, newest first |
 | `project` | Per-project totals and cost |
 | `live` | Live global dashboard (context gauge, today, all-time), refreshes every 10s |
 | `live this` | Live view of just this terminal's session |
