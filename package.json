@@ -1,0 +1,36 @@
+{
+  "name": "cctokens",
+  "version": "1.0.0",
+  "description": "Realtime Claude Code token usage & cost monitor for your terminal",
+  "bin": {
+    "cctokens": "bin/cctokens.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "tokens",
+    "token-usage",
+    "cost",
+    "cli",
+    "usage",
+    "monitor"
+  ],
+  "author": "Rhys Hughes <rhysx19@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysx19/cctokens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rhysx19/cctokens/issues"
+  },
+  "homepage": "https://github.com/rhysx19/cctokens#readme"
+}
